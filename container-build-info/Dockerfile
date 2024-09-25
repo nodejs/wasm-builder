@@ -23,15 +23,16 @@ RUN apk add -U clang lld wasi-sdk
 RUN apk info -v >/home/node/metadata/apk-info
 
 # Install BINARYEN 
-RUN wget https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-x86_64-linux.tar.gz && \
-    tar -zxvf binaryen-version_$BINARYEN_VERSION-x86_64-linux.tar.gz binaryen-version_$BINARYEN_VERSION/bin/wasm-opt && \
+RUN CURRENT_ARCH=`arch` &&
+    wget https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz && \
+    tar -zxvf binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz binaryen-version_$BINARYEN_VERSION/bin/wasm-opt && \
     mv binaryen-version_$BINARYEN_VERSION/bin/wasm-opt ./ && \
-    rm binaryen-version_$BINARYEN_VERSION-x86_64-linux.tar.gz && \
+    rm binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz && \
     rm -rf binaryen-version_$BINARYEN_VERSION && \
     chmod +x ./wasm-opt
 ENV WASM_OPT=$WORKDIR_DIR/wasm-opt
 RUN echo "Binaryen-version: $BINARYEN_VERSION" >$METADATA_DIR/binaryen-info
-RUN echo "Binaryen-url: https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-x86_64-linux.tar.gz" >>$METADATA_DIR/binaryen-info
+RUN echo "Binaryen-url: https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz" >>$METADATA_DIR/binaryen-info
 RUN echo "Binaryen-binary: $WASM_OPT" >>$METADATA_DIR/binaryen-info
 
 USER node
