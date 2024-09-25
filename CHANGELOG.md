@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/mhdawson/wasm-builder/compare/v0.0.4...v0.0.5) (2024-09-25)
+
+
+### Bug Fixes
+
+* handle missing binaryen versions on linux/arm ([9a9fedf](https://github.com/mhdawson/wasm-builder/commit/9a9fedf74dd56bd546235ce85a602ef9408c2de8))
+
 ## [0.0.4](https://github.com/mhdawson/wasm-builder/compare/v0.0.3...v0.0.4) (2024-09-25)
 
 
