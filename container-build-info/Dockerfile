@@ -23,7 +23,7 @@ RUN apk add -U clang lld wasi-sdk
 RUN apk info -v >/home/node/metadata/apk-info
 
 # Install BINARYEN 
-RUN CURRENT_ARCH=`arch` &&
+RUN CURRENT_ARCH=`arch` && \
     wget https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz && \
     tar -zxvf binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz binaryen-version_$BINARYEN_VERSION/bin/wasm-opt && \
     mv binaryen-version_$BINARYEN_VERSION/bin/wasm-opt ./ && \
