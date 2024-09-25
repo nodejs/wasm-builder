@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.3](https://github.com/mhdawson/wasm-builder/compare/v0.0.2...v0.0.3) (2024-09-25)
+
+
+### Bug Fixes
+
+* pull the right version of Binaryen for arm ([b5ca111](https://github.com/mhdawson/wasm-builder/commit/b5ca1118bacd773026ed29336c0e4ca488992fb3))
+
 ## [0.0.2](https://github.com/mhdawson/wasm-builder/compare/v0.0.1...v0.0.2) (2024-09-25)
 
 
