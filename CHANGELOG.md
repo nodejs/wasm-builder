@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.2](https://github.com/mhdawson/wasm-builder/compare/v0.0.1...v0.0.2) (2024-09-25)
+
+
+### Features
+
+* extend to publish for arm as well as x86 ([daf85d5](https://github.com/mhdawson/wasm-builder/commit/daf85d5f50b6e01b9469e1bcc646481ccad10f37))
+
 ## 0.0.1 (2024-09-24)
 
 
