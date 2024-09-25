@@ -22,14 +22,28 @@ COPY Dockerfile /home/node/metadata/Dockerfile
 RUN apk add -U clang lld wasi-sdk
 RUN apk info -v >/home/node/metadata/apk-info
 
-# Install BINARYEN 
+# Install BINARYEN, there are only linux/arm64 tar.gz's after 116
+# If we expect a versoin to exist and we don't get one error out
 RUN CURRENT_ARCH=`arch` && \
-    wget https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz && \
-    tar -zxvf binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz binaryen-version_$BINARYEN_VERSION/bin/wasm-opt && \
-    mv binaryen-version_$BINARYEN_VERSION/bin/wasm-opt ./ && \
-    rm binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz && \
-    rm -rf binaryen-version_$BINARYEN_VERSION && \
-    chmod +x ./wasm-opt
+    echo "ARCH:" $CURRENT_ARCH && \
+    wget https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz || true && \
+    if [ -e "./binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz" ]; then \
+      tar -zxvf binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz binaryen-version_$BINARYEN_VERSION/bin/wasm-opt && \
+      mv binaryen-version_$BINARYEN_VERSION/bin/wasm-opt ./ && \
+      rm binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz && \
+      rm -rf binaryen-version_$BINARYEN_VERSION && \
+      chmod +x ./wasm-opt; \
+    fi && \
+    if [ ! -e ./wasm-opt ]; then \
+      if [ "$CURRENT_ARCH" != "aarch64" ]; then \
+        exit 1; \
+      else \
+        if [ $BINARYEN_VERSION -gt 116 ]; then \
+          exit 1; \
+        fi; \
+      fi; \
+    fi
+
 ENV WASM_OPT=$WORKDIR_DIR/wasm-opt
 RUN echo "Binaryen-version: $BINARYEN_VERSION" >$METADATA_DIR/binaryen-info
 RUN echo "Binaryen-url: https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz" >>$METADATA_DIR/binaryen-info
