@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/mhdawson/wasm-builder/compare/v0.0.3...v0.0.4) (2024-09-25)
+
+
+### Bug Fixes
+
+* fixup Dockerfile after last change ([1080191](https://github.com/mhdawson/wasm-builder/commit/1080191109488acc6d2a162941022d0a3073bc81))
+
 ## [0.0.3](https://github.com/mhdawson/wasm-builder/compare/v0.0.2...v0.0.3) (2024-09-25)
 
 
