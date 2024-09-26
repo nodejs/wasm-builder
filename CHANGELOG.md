@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/mhdawson/wasm-builder/compare/v0.0.5...v0.0.6) (2024-09-26)
+
+
+### Features
+
+* add make for cjs-module-lexer ([30f0e7e](https://github.com/mhdawson/wasm-builder/commit/30f0e7e76c54a610fc7d97c75901428478132ace))
+
 ## [0.0.5](https://github.com/mhdawson/wasm-builder/compare/v0.0.4...v0.0.5) (2024-09-25)
 
 
