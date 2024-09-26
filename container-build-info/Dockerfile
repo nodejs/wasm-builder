@@ -6,21 +6,35 @@ ARG UID=1000
 ARG GID=1000
 
 # set SOURCE_DATE_EPOCH for reproduciability - https://reproducible-builds.org/docs/source-date-epoch/
-ENV SOURCE_DATE_EPOCH: 0
+ENV SOURCE_DATE_EPOCH=0
 
-ENV ROOT_DIR /home/node
-ENV METADATA_DIR $ROOT_DIR/metadata
+ENV ROOT_DIR=/home/node
+ENV METADATA_DIR=$ROOT_DIR/metadata
 RUN mkdir $METADATA_DIR
-ENV WORKDIR_DIR $ROOT_DIR/build
+ENV WORKDIR_DIR=$ROOT_DIR/build
 RUN mkdir WORKDIR_DIR
 WORKDIR $WORKDIR_DIR
 
 # Keep a copy of the Dockerfile used
 COPY Dockerfile /home/node/metadata/Dockerfile
 
+###################################
 # Install required system packages
+
+# those needed for undici
+RUN apk add -U clang lld wasi-sdk
+
+# those needed for cjs-module-lexar
 RUN apk add -U clang lld wasi-sdk make
+
+# those needed for amaro
+RUN apk add -U rust rust-wasm cargo cmake gcc g++ bash make
+
+# capture the versions of the packages installed
 RUN apk info -v >/home/node/metadata/apk-info
+
+###################################
+# Non package insalls
 
 # Install BINARYEN, there are only linux/arm64 tar.gz's after 116
 # If we expect a versoin to exist and we don't get one error out
