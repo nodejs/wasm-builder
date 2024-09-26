@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/mhdawson/wasm-builder/compare/v0.0.6...v0.0.7) (2024-09-26)
+
+
+### Features
+
+* add packages needed for amao wasm build ([b824ec8](https://github.com/mhdawson/wasm-builder/commit/b824ec8d3832ae71d90856b52cef0e0c011dd60a))
+
 ## [0.0.6](https://github.com/mhdawson/wasm-builder/compare/v0.0.5...v0.0.6) (2024-09-26)
 
 
