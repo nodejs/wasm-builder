@@ -19,7 +19,7 @@ WORKDIR $WORKDIR_DIR
 COPY Dockerfile /home/node/metadata/Dockerfile
 
 # Install required system packages
-RUN apk add -U clang lld wasi-sdk
+RUN apk add -U clang lld wasi-sdk make
 RUN apk info -v >/home/node/metadata/apk-info
 
 # Install BINARYEN, there are only linux/arm64 tar.gz's after 116
