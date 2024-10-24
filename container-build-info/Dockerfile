@@ -1,5 +1,5 @@
 # Modify these to update to newer versions
-FROM node:22-alpine3.19@sha256:3cb4748ed93c45cf4622c3382a5ce063af1fcbc5f3da6d2b669352ebace9f76d
+FROM node:22-alpine3.19@sha256:3fa6e0fa080872f038aa4171597419e5cc463acec7e12214c9e15172bae0b40b
 ARG BINARYEN_VERSION=116
 
 ARG UID=1000
