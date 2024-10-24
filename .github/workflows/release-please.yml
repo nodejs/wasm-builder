@@ -21,4 +21,4 @@ jobs:
           package-name: release
           bump-minor-pre-major: true
           bump-patch-for-minor-pre-major: true
-          token: ${{ secrets.RELEASE_PLEASE_GITHUB_ACTION }}
+          token: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN }}
