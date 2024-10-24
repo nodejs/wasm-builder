@@ -5,4 +5,4 @@ Currently used by
 
 nodejs/undici
 nodejs/amaro
-nodejs/cjs-module-lexar
+nodejs/cjs-module-lexer
