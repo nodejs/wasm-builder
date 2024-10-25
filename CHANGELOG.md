@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.8](https://github.com/nodejs/wasm-builder/compare/v0.0.7...v0.0.8) (2024-10-25)
+
+
+### Features
+
+* update to latest node 22 alpine container ([#16](https://github.com/nodejs/wasm-builder/issues/16)) ([61baabc](https://github.com/nodejs/wasm-builder/commit/61baabc1b3945ed7fa586e59140cc8fd0f2355dd))
+
 ## [0.0.7](https://github.com/mhdawson/wasm-builder/compare/v0.0.6...v0.0.7) (2024-09-26)
 
 
