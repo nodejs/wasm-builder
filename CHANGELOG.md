@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/nodejs/wasm-builder/compare/v0.0.8...v0.0.9) (2024-10-25)
+
+
+### Features
+
+* update to using alpine 3.20 base container ([#19](https://github.com/nodejs/wasm-builder/issues/19)) ([dcf25e7](https://github.com/nodejs/wasm-builder/commit/dcf25e79ab106673d995747d54ffb05e5114d887))
+
 ## [0.0.8](https://github.com/nodejs/wasm-builder/compare/v0.0.7...v0.0.8) (2024-10-25)
 
 
