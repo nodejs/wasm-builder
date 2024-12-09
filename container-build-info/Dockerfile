@@ -1,6 +1,7 @@
 # Modify these to update to newer versions
 FROM node:22-alpine3.20@sha256:fc95a044b87e95507c60c1f8c829e5d98ddf46401034932499db370c494ef0ff
 ARG BINARYEN_VERSION=116
+ARG RUST_VERSION=1.83.0
 
 ARG UID=1000
 ARG GID=1000
@@ -12,6 +13,7 @@ ENV ROOT_DIR=/home/node
 ENV METADATA_DIR=$ROOT_DIR/metadata
 RUN mkdir $METADATA_DIR
 ENV WORKDIR_DIR=$ROOT_DIR/build
+ENV PATH="$ROOT_DIR/.cargo/bin:$PATH"
 RUN mkdir WORKDIR_DIR
 WORKDIR $WORKDIR_DIR
 
@@ -28,7 +30,7 @@ RUN apk add -U clang lld wasi-sdk
 RUN apk add -U clang lld wasi-sdk make
 
 # those needed for amaro
-RUN apk add -U rust rust-wasm cargo cmake gcc g++ bash make
+RUN apk add -U curl rust-wasm cmake gcc g++ bash make
 
 # capture the versions of the packages installed
 RUN apk info -v >/home/node/metadata/apk-info
@@ -63,4 +65,11 @@ RUN echo "Binaryen-version: $BINARYEN_VERSION" >$METADATA_DIR/binaryen-info
 RUN echo "Binaryen-url: https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-$CURRENT_ARCH-linux.tar.gz" >>$METADATA_DIR/binaryen-info
 RUN echo "Binaryen-binary: $WASM_OPT" >>$METADATA_DIR/binaryen-info
 
+RUN chmod -R 777 $METADATA_DIR
 USER node
+
+# Install Rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs >$METADATA_DIR/install_rust.sh
+RUN bash $METADATA_DIR/install_rust.sh -y --quiet
+RUN rustup install $RUST_VERSION
+RUN rustup default $RUST_VERSION
