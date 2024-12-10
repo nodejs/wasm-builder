@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/nodejs/wasm-builder/compare/v0.0.9...v0.0.10) (2024-12-10)
+
+
+### Features
+
+* refactor how rust is install ([#21](https://github.com/nodejs/wasm-builder/issues/21)) ([056e74a](https://github.com/nodejs/wasm-builder/commit/056e74aa6ed8bcceaa22c2d636288ee26a72294a))
+
 ## [0.0.9](https://github.com/nodejs/wasm-builder/compare/v0.0.8...v0.0.9) (2024-10-25)
 
 
