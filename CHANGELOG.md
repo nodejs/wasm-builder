@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.11](https://github.com/nodejs/wasm-builder/compare/v0.0.10...v0.0.11) (2026-10-28)
+
+
+### Features
+
+* update wasm builder image to Node 24 ([12268d8](https://github.com/nodejs/wasm-builder/commit/12268d875cbc9357e7a87321d74e13a27120fd58))
+
 ## [0.0.10](https://github.com/nodejs/wasm-builder/compare/v0.0.9...v0.0.10) (2024-12-10)
 
 
